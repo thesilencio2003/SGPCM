@@ -16,13 +16,23 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('pacientes.index')">
+                        {{ __('pacientes') }}
+                    </x-nav-link>
+                </div>
+    
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('medicos.index')">
+                        {{ __('medicos') }}
+                    </x-nav-link>
+                </div>
+
             </div>
 
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('pacientes.index')">
-                    {{ __('pacientes') }}
-                </x-nav-link>
-            </div>
+           
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

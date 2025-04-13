@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacientsController;
+use App\Http\Controllers\MedicoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/pacientes/{id}', [PacientsController::class,'update'])->name('pacientes.update');
     Route::get('/pacientes/{id}/edit', [PacientsController::class,'edit'])->name('pacientes.edit');
     Route::delete('/pacientes/{id}', [PacientsController::class,'destroy'])-> name('pacientes.destroy');
+
+    Route::get('/medicos', [MedicoController::class,'index'])->name('medicos.index');
+
 });
 
 require __DIR__.'/auth.php';

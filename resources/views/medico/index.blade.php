@@ -10,7 +10,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('paciente') }}
+                {{ __('medico') }}
             </h2>
         </x-slot>
 
@@ -18,39 +18,32 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        <a href="{{ route('pacientes.create') }}" class="btn btn-success mb-4">{{ __('Crer nuevo paciente') }}</a>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">Code</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Apellido</th>
-                                    <th scope="col">fecha_nacimiento</th>
-                                    <th scope="col">genero</th>
-                                    <th scope="col">direccion</th>
+                                    <th scope="col">especialidad</th>
+                                    <th scope="col">horarios</th>
                                     <th scope="col">telefono</th>
                                     <th scope="col">email</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pacientes as $paciente)
+                                @foreach ($medicos as $medico)
                                 <tr>
-                                    <th scope="row">{{ $paciente->id }}</th>
-                                    <td>{{ $paciente->nombre }}</td>
-                                    <td>{{ $paciente->apellido }}</td>
-                                    <td>{{ $paciente->fecha_nacimiento }}</td>
-                                    <td>{{ $paciente->genero }}</td>
-                                    <td>{{ $paciente->direccion }}</td>
-                                    <td>{{ $paciente->telefono }}</td>
-                                    <td>{{ $paciente->email }}</td>
+                                    <th scope="row">{{ $medico->id }}</th>
+                                    <td>{{ $medico->nombre }}</td>
+                                    <td>{{ $medico->apellido }}</td>
+                                    <td>{{ $medico->especialidad }}</td>
+                                    <td>{{ $medico->horarios }}</td>
+                                    <td>{{ $medico->telefono }}</td>
+                                    <td>{{ $medico->email }}</td>
                                     <td> 
-                                        <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary btn-sm">{{ __('Edit') }}</a>
-                                        <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
+                                      
+
                                     </td>
                                 </tr>
                                 @endforeach
