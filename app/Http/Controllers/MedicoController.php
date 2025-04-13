@@ -23,7 +23,11 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        //
+        $medicos = DB::table('medicos')
+        ->orderBy('id')
+        ->get();
+        return view('medico.new', ['medicos'=>$medicos]);
+ 
     }
 
     /**
@@ -31,7 +35,19 @@ class MedicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $medico = new medicos();
+        $medico->nombre = $request->nombre;
+        $medico->apellido = $request->apellido;
+        $medico->especialidad = $request->especialidad;
+        $medico->horarios = $request->horarios;
+        $medico->telefono = $request->telefono;
+        $medico->email = $request->email;
+        $medico->save();
+
+        $medicos = DB::table('medicos')
+        ->get();
+         return view('medico.index', ['medicos'=>$medicos]);
+  
     }
 
     /**

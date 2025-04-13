@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/pacientes/{id}', [PacientsController::class,'destroy'])-> name('pacientes.destroy');
 
     Route::get('/medicos', [MedicoController::class,'index'])->name('medicos.index');
+    Route::post('/medicos', [MedicoController::class,'store'])->name('medicos.store');
+    Route::get ('/medicos/create', [MedicoController::class,'create'])->name('medicos.create');
 
 });
 
