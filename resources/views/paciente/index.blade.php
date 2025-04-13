@@ -46,6 +46,11 @@
                                     <td>{{ $paciente->email }}</td>
                                     <td> 
                                         <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary btn-sm">{{ __('Edit') }}</a>
+                                        <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

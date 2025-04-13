@@ -92,15 +92,17 @@ class PacientsController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::table('citas')->join('pacientes', 'citas.paciente_id', '=', 'pacientes.id')
-            ->where('pacientes.id', $id)
-            ->delete();
+        
+            DB::table('citas')
+                ->where('paciente_id', $id)
+                ->delete();
+        
+            DB::table('pacientes')
+                ->where('id', $id)
+                ->delete();
+        
+            $pacientes = DB::table('pacientes')->get();
+            return view('paciente.index', ['pacientes' => $pacientes]);
 
-        DB::table('pacientes')->join('citas', 'pacientes.id', '=', 'citas.paciente_id')
-            ->where('pacientes.id', $id)
-            ->delete();
-
-        $pacientes = DB::table('pacientes')->get();
-        return view('pacientes.index', ['pacientes' => $pacientes]);
     }
 }
