@@ -1,5 +1,5 @@
 <!doctype html>
-  <html lang="en">
+  <html lang="es">
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-
+                        <a href="{{ route('pacientes.create') }}" class="btn btn-success mb-4">{{ __('Crer nuevo paciente') }}</a>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -37,17 +37,14 @@
                                 @foreach ($pacientes as $paciente)
                                 <tr>
                                     <th scope="row">{{ $paciente->id }}</th>
-                                    <td>{{ $paciente->name }}</td>
-                                    <td>{{ $paciente->Apellido }}</td>
+                                    <td>{{ $paciente->nombre }}</td>
+                                    <td>{{ $paciente->apellido }}</td>
                                     <td>{{ $paciente->fecha_nacimiento }}</td>
                                     <td>{{ $paciente->genero }}</td>
                                     <td>{{ $paciente->direccion }}</td>
                                     <td>{{ $paciente->telefono }}</td>
                                     <td>{{ $paciente->email }}</td>
                                     <td>
-                                   
-              
-              
                                     </td>
                                 </tr>
                                 @endforeach

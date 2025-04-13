@@ -22,7 +22,7 @@ class PacientsController extends Controller
      */
     public function create()
     {
-        return view('pacientes.create');
+        return view('paciente.new');
     }
 
     /**
@@ -41,7 +41,7 @@ class PacientsController extends Controller
         ]);
 
         $pacientes = DB::table('pacientes')->get();
-        return view('pacientes.index', ['pacientes' => $pacientes]);
+        return view('paciente.index', ['pacientes' => $pacientes]);
     }
 
     /**
