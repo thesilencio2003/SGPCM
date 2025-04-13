@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacientsController;
 use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\CitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get( '/medicos/{medico}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
     Route::delete ('/medicos/{medico}', [MedicoController::class,'destroy'])->name('medicos.destroy');
 
+    Route::get('/citas', [CitasController::class,'index'])->name('citas.index');
 
 });
 
