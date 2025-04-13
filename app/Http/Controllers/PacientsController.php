@@ -58,12 +58,12 @@ class PacientsController extends Controller
     public function edit(string $id)
     {
         $paciente = DB::table('pacientes')
-            ->leftJoin('citas', 'pacientes.id', '=', 'citas.paciente_id')
-            ->select('pacientes.*', 'citas.fecha as cita_fecha')
-            ->where('pacientes.id', $id)
-            ->first();
+        ->leftJoin('citas', 'pacientes.id', '=', 'citas.paciente_id')
+        ->select('pacientes.*', 'citas.fecha_cita as cita_fecha') 
+        ->where('pacientes.id', $id)
+        ->first();
 
-        return view('pacientes.edit', ['paciente' => $paciente]);
+        return view('paciente.edit', ['paciente' => $paciente]);
     }
 
     /**
@@ -72,20 +72,19 @@ class PacientsController extends Controller
     public function update(Request $request, string $id)
     {
         DB::table('pacientes')
-            ->join('citas', 'pacientes.id', '=', 'citas.paciente_id')
-            ->where('pacientes.id', $id)
-            ->update([
-                'nombre' => $request->nombre,
-                'apellido' => $request->apellido,
-                'fecha_nacimiento' => $request->fecha_nacimiento,
-                'genero' => $request->genero,
-                'direccion' => $request->direccion,
-                'telefono' => $request->telefono,
-                'email' => $request->email,
-            ]);
+        ->where('id', $id)
+        ->update([
+        'nombre' => $request->nombre,
+        'apellido' => $request->apellido,
+        'fecha_nacimiento' => $request->fecha_nacimiento,
+        'genero' => $request->genero,
+        'direccion' => $request->direccion,
+        'telefono' => $request->telefono,
+        'email' => $request->email,
+    ]);
 
         $pacientes = DB::table('pacientes')->get();
-        return view('pacientes.index', ['pacientes' => $pacientes]);
+        return view('paciente.index', ['pacientes' => $pacientes]);
     }
 
     /**

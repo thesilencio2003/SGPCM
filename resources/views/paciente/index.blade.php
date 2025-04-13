@@ -44,7 +44,8 @@
                                     <td>{{ $paciente->direccion }}</td>
                                     <td>{{ $paciente->telefono }}</td>
                                     <td>{{ $paciente->email }}</td>
-                                    <td>
+                                    <td> 
+                                        <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-primary btn-sm">{{ __('Edit') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach
