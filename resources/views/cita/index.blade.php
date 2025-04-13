@@ -46,6 +46,12 @@
                                                 
                                                 <a href="{{route('citas.edit',['cita'=>$cita->id])}}" class="btn btn-info">Edit</a>
 
+                                                <form action="{{ route('citas.destroy', $cita->id) }}" method="POST" style="display: inline-block">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <input class="btn btn-danger" type="submit" value="Eliminar" onclick="return confirm('¿Estás seguro de eliminar esta cita?')">
+                                                </form>
+
                                             </td>
                                         </tr>
                                     @endforeach

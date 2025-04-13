@@ -130,6 +130,15 @@ class CitasController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cita = Citas::findOrFail($id);
+        $cita->delete();
+
+        $citas = DB::table('citas')
+            ->join('pacientes', 'citas.paciente_id', '=', 'pacientes.id')
+            ->join('medicos', 'citas.medico_id', '=', 'medicos.id')
+            ->select('citas.*', 'pacientes.nombre as nombre_paciente', 'medicos.nombre as nombre_medico')
+            ->get();
+
+        return view('cita.index', ['citas' => $citas]);
     }
 }
