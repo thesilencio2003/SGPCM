@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::delete ('/medicos/{medico}', [MedicoController::class,'destroy'])->name('medicos.destroy');
 
     Route::get('/citas', [CitasController::class,'index'])->name('citas.index');
+    Route::post('/citas', [CitasController::class,'store'])->name('citas.store');
+    Route::get ('/citas/create', [CitasController::class,'create'])->name('citas.create');
 
 });
 
