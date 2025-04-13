@@ -40,8 +40,11 @@ Asegúrate de que tu servidor cumpla con los siguientes requisitos para ejecutar
 Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local o servidor:
 
 1.  **Clona el repositorio:**
+     ```bash
     git clone [https://github.com/thesilencio2003/SGPCM.git]
     cd [SGPCM]
+    ```
+
 
 2.  **Instala las dependencias de Composer:**
     composer install
