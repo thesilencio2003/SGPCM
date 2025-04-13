@@ -87,7 +87,18 @@ class CitasController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cita = Citas::find($id);
+
+        $pacientes = DB::table('pacientes')
+            ->orderBy('nombre')
+            ->get();
+
+        $medicos = DB::table('medicos')
+            ->orderBy('nombre')
+            ->get();
+
+        return view('cita.edit', ['cita' => $cita, 'pacientes' => $pacientes, 'medicos' => $medicos]);
+   
     }
 
     /**
@@ -95,7 +106,23 @@ class CitasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $cita = Citas::findOrFail($id);
+
+        $cita->paciente_id = $request->paciente_id;
+        $cita->medico_id = $request->medico_id;
+        $cita->fecha_cita = $request->fecha_cita;
+        $cita->hora_cita = $request->hora_cita;
+        $cita->motivo_consulta = $request->motivo_consulta;
+        $cita->save(); 
+
+        $citas = DB::table('citas')
+            ->join('pacientes', 'citas.paciente_id', '=', 'pacientes.id')
+            ->join('medicos', 'citas.medico_id', '=', 'medicos.id')
+            ->select('citas.*', 'pacientes.nombre as nombre_paciente', 'medicos.nombre as nombre_medico')
+            ->get();
+
+        return view('cita.index', ['citas' => $citas]);
+   
     }
 
     /**

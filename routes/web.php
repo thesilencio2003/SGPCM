@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/citas', [CitasController::class,'index'])->name('citas.index');
     Route::post('/citas', [CitasController::class,'store'])->name('citas.store');
     Route::get ('/citas/create', [CitasController::class,'create'])->name('citas.create');
+    Route::put('/citas/{cita}', [CitasController::class, 'update'])->name('citas.update');
+    Route::get( '/citas/{cita}/edit', [CitasController::class, 'edit'])->name('citas.edit');
 
 });
 

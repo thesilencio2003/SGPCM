@@ -43,7 +43,10 @@
                                             <td>{{ $cita->hora_cita }}</td>
                                             <td>{{ $cita->motivo_consulta }}</td>
                                             <td>
-                                                </td>
+                                                
+                                                <a href="{{route('citas.edit',['cita'=>$cita->id])}}" class="btn btn-info">Edit</a>
+
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
