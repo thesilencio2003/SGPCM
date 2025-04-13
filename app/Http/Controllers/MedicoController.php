@@ -96,6 +96,10 @@ class MedicoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $medico = medicos::find($id);
+        $medico->delete();
+        $medicos = DB::table('medicos')
+        ->get();
+        return view('medico.index', ['medicos' => $medicos]);
     }
 }

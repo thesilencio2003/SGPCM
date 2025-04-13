@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get ('/medicos/create', [MedicoController::class,'create'])->name('medicos.create');
     Route::put('/medicos/{medico}', [MedicoController::class, 'update'])->name('medicos.update');
     Route::get( '/medicos/{medico}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
+    Route::delete ('/medicos/{medico}', [MedicoController::class,'destroy'])->name('medicos.destroy');
 
 
 });

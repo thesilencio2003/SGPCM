@@ -44,7 +44,11 @@
                                     <td>{{ $medico->email }}</td>
                                     <td> 
                                         <a href="{{ route('medicos.edit', $medico->id) }}" class="btn btn-primary btn-sm">{{ __('Edit') }}</a>
-
+                                        <form action="{{ route('medicos.destroy', $medico->id) }}" method="POST" style="display: inline-block">
+                                            @method('delete')
+                                            @csrf
+                                            <input class="btn btn-danger" type="submit" value="Delete">
+                                        </form>
 
                                     </td>
                                 </tr>
