@@ -63,7 +63,9 @@ class MedicoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $medico = medicos::find($id);
+        return view('medico.edit', ['medico' => $medico]);
+
     }
 
     /**
@@ -71,7 +73,22 @@ class MedicoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $medico = medicos::find($id);
+
+        $medico->nombre = $request->nombre;
+        $medico->apellido = $request->apellido;
+        $medico->especialidad = $request->especialidad;
+        $medico->horarios = $request->horarios;
+        $medico->telefono = $request->telefono;
+        $medico->email = $request->email;
+        $medico->save();
+       
+
+        $medicos = DB::table('medicos')
+            ->get();    
+
+        return view('medico.index', ['medicos' => $medicos]);
+        
     }
 
     /**

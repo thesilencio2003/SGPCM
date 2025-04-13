@@ -43,7 +43,8 @@
                                     <td>{{ $medico->telefono }}</td>
                                     <td>{{ $medico->email }}</td>
                                     <td> 
-                                      
+                                        <a href="{{ route('medicos.edit', $medico->id) }}" class="btn btn-primary btn-sm">{{ __('Edit') }}</a>
+
 
                                     </td>
                                 </tr>

@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/medicos', [MedicoController::class,'index'])->name('medicos.index');
     Route::post('/medicos', [MedicoController::class,'store'])->name('medicos.store');
     Route::get ('/medicos/create', [MedicoController::class,'create'])->name('medicos.create');
+    Route::put('/medicos/{medico}', [MedicoController::class, 'update'])->name('medicos.update');
+    Route::get( '/medicos/{medico}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
+
 
 });
 
